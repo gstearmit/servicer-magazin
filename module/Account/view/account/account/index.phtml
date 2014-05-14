@@ -1,0 +1,64 @@
+<?php
+$title = 'My account';
+$this->headTitle($title);
+$url_order = 'ASC';
+if ($order_by == 'accountname')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'artist')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+?>
+<?php 
+// echo 'hang si '.WEB_PATH_IMG;
+// echo '<br/>';
+?>
+<img src="<?php echo WEB_PATH_IMG;?>/book1/car_magazine_1.jpg" style="width: 50px;height:40px;">
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p><a href="<?php
+echo $this->url('account', array(
+    'action' => 'add'));
+?>">Add new account</a></p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <a href="<?php echo $this->url('account', array('order_by' => 'accountname', 'order' => $url_order)); ?>">User Name <?php if ($order_by == 'accountname'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th>
+            <a href="<?php echo $this->url('account', array('order_by' => 'accpass', 'order' => $url_order)); ?>">Password <?php if ($order_by == 'accpass'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th>
+            <a href="<?php echo $this->url('account', array('order_by' => 'address', 'order' => $url_order)); ?>">Address <?php if ($order_by == 'address'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th>
+            <a href="<?php echo $this->url('account', array('order_by' => 'sexual', 'order' => $url_order)); ?>">Sexual <?php if ($order_by == 'sexual'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th>
+            <a href="<?php echo $this->url('account', array('order_by' => 'email', 'order' => $url_order)); ?>">Email <?php if ($order_by == 'email'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        
+        <th><a href="#">Action</a></th>
+    </tr>
+    <?php foreach ($paginator as $account) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($account->accountname); ?></td>
+            <td><?php echo $this->escapeHtml($account->accpass); ?></td>
+            <td><?php echo $this->escapeHtml($account->address); ?></td>
+            <td><?php echo $this->escapeHtml($account->sexual); ?></td>
+            <td><?php echo $this->escapeHtml($account->email); ?></td>
+            <td>
+        <a href="<?php echo $this->url('account',
+            array('action'=>'edit', 'id' => $account->id));?>">Edit</a>
+        <a href="<?php echo $this->url('account',
+            array('action'=>'delete', 'id' => $account->id));?>">Delete</a>
+    </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<?php
+    echo $this->paginationControl(
+            $paginator, 'Sliding', 'paginator-slide', array('order_by' => $order_by, 'order' => $order)
+    );
+    ?>

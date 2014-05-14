@@ -1,0 +1,52 @@
+<?php
+$title = 'My aupload';
+$this->headTitle($title);
+$url_order = 'ASC';
+if ($order_by == 'auploadname')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'fileupload')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+?>
+<?php 
+// echo 'hang si '.WEB_PATH_IMG;
+// echo '<br/>';
+?>
+<img src="<?php echo WEB_PATH_IMG;?>/book1/car_magazine_3.jpg" style="width: 50px;height:40px;">
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p><a href="<?php
+echo $this->url('aupload', array(
+    'action' => 'add'));
+?>">Add new aupload</a></p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <a href="<?php echo $this->url('aupload', array('order_by' => 'auploadname', 'order' => $url_order)); ?>">File Name <?php if ($order_by == 'auploadname'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th>
+            <a href="<?php echo $this->url('aupload', array('order_by' => 'fileupload', 'order' => $url_order)); ?>">Display Thumbnail <?php if ($order_by == 'fileupload'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        
+        <th><a href="#">Action</a></th>
+    </tr>
+    <?php foreach ($paginator as $aupload) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($aupload->auploadname); ?></td>
+            <td><img src="<?php echo WEB_PATH_IMG.'/';?><?php echo $this->escapeHtml($aupload->fileupload); ?>" style="width: 100px; height:100px;"/></td>
+            <td>
+                <a href="<?php echo $this->url('aupload', array('action' => 'edit', 'id' => $aupload->id));
+        ?>">Edit</a> |
+                <a href="<?php echo $this->url('aupload', array('action' => 'delete', 'id' => $aupload->id));
+        ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<?php
+    echo $this->paginationControl(
+            $paginator, 'Sliding', 'paginator-slide', array('order_by' => $order_by, 'order' => $order)
+    );
+    ?>
