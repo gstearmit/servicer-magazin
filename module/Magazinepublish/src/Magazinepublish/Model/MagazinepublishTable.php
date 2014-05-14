@@ -40,8 +40,11 @@ class MagazinepublishTable extends AbstractTableGateway {
 
     public function saveMagazinepublish(Magazinepublish $magazinepublish) {
         $data = array(
-        	'auploadname' => $magazinepublish->auoloadname,
-            'fileupload' => $magazinepublish->fielupload,
+        	'title' => $magazinepublish->title,
+            'descriptionkey' => $magazinepublish->descriptionkey,
+        	'imgkey' => 'magazineimage/'.$magazinepublish->imgkey,
+        	'idmzalbum' => $magazinepublish->idmzalbum,
+        	'password'=>$magazinepublish->password,
         );
 
         $id = (int) $magazinepublish->id;
