@@ -12,7 +12,7 @@ return array(
 						'aupload' => array(
 								'type'    => 'segment',
 								'options' => array(
-										'route'    => '/aupload[/:action][/:id][/page/:page][/order_by/:order_by][/:order]',
+										'route'    => '/upload-pages[/:action][/:id][/page/:page][/order_by/:order_by][/:order]',
 										'constraints' => array(
 												'action' => '(?!\bpage\b)(?!\border_by\b)[a-zA-Z][a-zA-Z0-9_-]*',
 												'id'     => '[0-9]+',
@@ -34,7 +34,7 @@ return array(
 						'MagazineUpload' => __DIR__ . '/../view',
 				),
 				'template_map' => array(
-						'paginator-slide' => __DIR__ . '/../view/layout/slidePaginator.phtml',
+						'paginator-mzup' => __DIR__ . '/../view/layout/slidePaginator.phtml',
 				),
 		),
 );

@@ -30,7 +30,7 @@ class MzimageController extends AbstractActionController {
         $page = $this->params()->fromRoute('page') ? (int) $this->params()->fromRoute('page') : 1;
 
         $mzimages = $this->getMzimageTable()->fetchAll($select->order($order_by . ' ' . $order));
-        $itemsPerPage = 5;        // is Number record/page
+        $itemsPerPage = 10;        // is Number record/page
 
         $mzimages->current();
         $paginator = new Paginator(new paginatorIterator($mzimages));
@@ -80,10 +80,11 @@ class MzimageController extends AbstractActionController {
     }
 
     public function editAction() {
-        $id = (int) $this->params('mzimg.id');
+        $id = (int) $this->params('id');
+        $idmz=(int)$this->params('idmzimg');
 //         var_dump($id);
 //         die;
-        if (!$id) {
+        if ((!$id)&&(!$idmz)) {
             return $this->redirect()->toRoute('mzimage', array('action' => 'add'));
         }
         $mzimage = $this->getMzimageTable()->getMzimage($id);
@@ -104,14 +105,15 @@ class MzimageController extends AbstractActionController {
         }
 
         return array(
-            'mzimg.id' => $id,
+            'id' => $id,
             'form' => $form,
         );
     }
 
     public function deleteAction() {
-        $id = (int) $this->params('idmzimg');
-        if (!$id) {
+        $idmz = (int) $this->params('idmzimg');
+        $id = (int) $this->params('id');
+        if ((!$id)&&(!$idmz)) {
             return $this->redirect()->toRoute('mzimage');
         }
 
