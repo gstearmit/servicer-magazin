@@ -33,7 +33,7 @@ return array(
             'aupload' => __DIR__ . '/../view',
         ),
         'template_map' => array(
-            'paginator-slide' => __DIR__ . '/../view/layout/slidePaginator.phtml',
+            'paginator-upf' => __DIR__ . '/../view/layout/slidePaginator.phtml',
         ),
     ),
 );

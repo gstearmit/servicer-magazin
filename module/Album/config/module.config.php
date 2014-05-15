@@ -20,7 +20,7 @@ return array(
                         'order' => 'ASC|DESC',
                     ),
                     'defaults' => array(
-                        'controller' => 'album\Controller\album',
+                        'controller' => 'Album\Controller\Album',
                         'action'     => 'index',
                     ),
                 ),
@@ -33,7 +33,7 @@ return array(
             'album' => __DIR__ . '/../view',
         ),
     		'template_map' => array(
-    				'paginator-slide' => __DIR__ . '/../view/layout/slidePaginator.phtml',
+    				'paginator-album' => __DIR__ . '/../view/layout/slidePaginator.phtml',
     		),
     ),
 );

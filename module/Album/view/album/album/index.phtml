@@ -30,7 +30,7 @@ echo $this->url('album', array(
         </th>     
         <th><a href="#">Action</a></th>
     </tr>
-    <?php foreach ($paginator as $album) : ?>
+    <?php foreach ($paginatoralbum as $album) : ?>
         <tr>
             <td><?php echo $this->escapeHtml($album->title); ?></td>
             <td><?php echo $this->escapeHtml($album->artist); ?></td>
@@ -46,6 +46,6 @@ echo $this->url('album', array(
 
 <?php
     echo $this->paginationControl(
-            $paginator, 'Sliding', 'paginator-slide', array('order_by' => $order_by, 'order' => $order)
+            $paginatoralbum, 'Sliding', 'paginator-album', array('order_by' => $order_by, 'order' => $order)
     );
     ?>
