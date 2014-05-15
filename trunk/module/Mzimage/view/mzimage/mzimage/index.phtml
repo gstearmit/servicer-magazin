@@ -1,0 +1,48 @@
+<?php
+$title = 'My mzimages';
+$this->headTitle($title);
+$url_order = 'ASC';
+if ($order_by == 'description')
+$url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'img')
+$url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+?>
+
+<img src="<?php echo WEB_PATH_IMG;?>/book1/car_magazine_2.jpg" style="width: 50px;height:40px;">
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p><a href="<?php
+echo $this->url('mzimage', array( 'action' => 'add'));
+?>">Add new mzimage</a></p>
+
+
+<table class="table">
+<tr>
+<th>
+<a href="<?php echo $this->url('mzimage', array('order_by' => 'description', 'order' => $url_order)); ?>">Description <?php if ($order_by == 'description'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+</th>
+<th>
+<a href="<?php echo $this->url('mzimage', array('order_by' => 'img', 'order' => $url_order)); ?>">Thumbnail <?php if ($order_by == 'img'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+</th>
+
+<th><a href="">Action</a></th>
+</tr>
+<?php foreach ($paginatorimg as $mzimage) : ?>
+<tr>
+<td><?php echo $this->escapeHtml($mzimage->description); ?></td>
+<td><img src="<?php echo WEB_PATH_IMG.'/';?><?php echo $this->escapeHtml($mzimage->img); ?>" style="width: 100px; height:100px;"/></td>
+<td>
+<a href="<?php echo $this->url('mzimage', array('action' => 'edit', 'id' => $mzimage->id));
+?>">Edit</a> |
+<a href="<?php echo $this->url('mzimage', array('action' => 'delete', 'id' => $mzimage->id));
+?>">Delete</a>
+</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<?php
+echo $this->paginationControl(
+$paginatorimg, 'Sliding', 'page-imzimg', array('order_by' => $order_by, 'order' => $order)
+);
+?>
