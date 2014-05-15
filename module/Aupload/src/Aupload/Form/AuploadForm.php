@@ -9,7 +9,6 @@ class AuploadForm extends Form
     {
         // we want to ignore the name passed
         parent::__construct('aupload');
-
         $this->setAttribute('method', 'post');
         $this->add(array(
             'name' => 'id',
