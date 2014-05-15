@@ -49,7 +49,7 @@ public function indexAction() {
                     'order_by' => $order_by,
                     'order' => $order,
                     'page' => $page,
-                    'paginator' => $paginator,
+                    'paginatoruser' => $paginator,
                 ));
     }
 

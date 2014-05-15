@@ -31,7 +31,7 @@ echo $this->url('aupload', array(
         
         <th><a href="#">Action</a></th>
     </tr>
-    <?php foreach ($paginator as $aupload) : ?>
+    <?php foreach ($paginatorupf as $aupload) : ?>
         <tr>
             <td><?php echo $this->escapeHtml($aupload->auploadname); ?></td>
             <td><img src="<?php echo WEB_PATH_IMG.'/';?><?php echo $this->escapeHtml($aupload->fileupload); ?>" style="width: 100px; height:100px;"/></td>
@@ -47,6 +47,6 @@ echo $this->url('aupload', array(
 
 <?php
     echo $this->paginationControl(
-            $paginator, 'Sliding', 'paginator-slide', array('order_by' => $order_by, 'order' => $order)
+            $paginatorupf, 'Sliding', 'paginator-upf', array('order_by' => $order_by, 'order' => $order)
     );
     ?>

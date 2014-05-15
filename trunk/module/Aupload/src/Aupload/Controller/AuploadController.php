@@ -37,7 +37,7 @@ public function indexAction() {
         $page = $this->params()->fromRoute('page') ? (int) $this->params()->fromRoute('page') : 1;
 
         $aupload = $this->getAuploadTable()->fetchAll($select->order($order_by . ' ' . $order));
-        $itemsPerPage = 350;        // is Number record/page
+        $itemsPerPage = 5;        // is Number record/page
 
         $aupload->current();
         $paginator = new Paginator(new paginatorIterator($aupload));
@@ -49,7 +49,7 @@ public function indexAction() {
                     'order_by' => $order_by,
                     'order' => $order,
                     'page' => $page,
-                    'paginator' => $paginator,
+                    'paginatorupf' => $paginator,
                 ));
     }
 
