@@ -1,10 +1,10 @@
 <?php
-$title = 'Add new aupload';
+$title = 'Upload new file';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
-<?php
+<?php 
 $form = $this->form;
 $form->setAttribute('action', $this->url('aupload', array('action' => 'add')));
 $form->prepare();
@@ -15,4 +15,3 @@ echo $this->formRow($form->get('auploadname')) . PHP_EOL;
 echo $this->formRow($form->get('fileupload')) . PHP_EOL;
 echo $this->formInput($form->get('submit')) . PHP_EOL;
 echo $this->form()->closeTag($form) . PHP_EOL;
-

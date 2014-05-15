@@ -79,8 +79,9 @@ class MzimageTable extends AbstractTableGateway {
 				'description' => $mzimage->description 
 		);
 		
-		$id = ( int ) $mzimage->idmzimg;
-		if ($id == 0) {
+		$idmz = ( int ) $mzimage->idmzimg;
+		$id=(int)$mzimage->id;
+		if (($id == 0)&&($idmz==0)) {
 			$this->insert ( $data );
 		} else {
 			if ($this->getMzimage ( $id )) {
@@ -94,7 +95,7 @@ class MzimageTable extends AbstractTableGateway {
 	}
 	public function deleteMzimage($id) {
 		$this->delete ( array (
-				'id' => $id 
+				'id' => $id
 		) );
 	}
 }
