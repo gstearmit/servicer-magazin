@@ -26,7 +26,7 @@ echo $this->url('magazinepublish', array(
             <a href="<?php echo $this->url('magazinepublish', array('order_by' => 'title', 'order' => $url_order)); ?>">Title <?php if ($order_by == 'title'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
         </th>
         <th>
-            <a href="<?php echo $this->url('magazinepublish', array('order_by' => 'descriptionkey', 'order' => $url_order)); ?>">description <?php if ($order_by == 'descriptionkey'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+            <a href="<?php echo $this->url('magazinepublish', array('order_by' => 'descriptionkey', 'order' => $url_order)); ?>">Description <?php if ($order_by == 'descriptionkey'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
         </th>
         <th>
             <a href="<?php echo $this->url('magazinepublish', array('order_by' => 'imgkey', 'order' => $url_order)); ?>">Thumbnail <?php if ($order_by == 'imgkey'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
